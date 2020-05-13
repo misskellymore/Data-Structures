@@ -10,16 +10,24 @@ return elements in First In First Out order.
 3. What is the difference between using an array vs. a linked list when 
    implementing a Queue?
 """
+
+from collections import deque
+
+
 class Queue:
     def __init__(self):
         self.size = 0
-        # self.storage = ?
+        self.storage = deque()
     
     def __len__(self):
-        pass
+        return len(self.storage)
 
     def enqueue(self, value):
-        pass
+        self.storage.append(value)
 
     def dequeue(self):
-        pass
+        if self.storage:
+            return self.storage.popleft()
+
+        else: 
+            return None 

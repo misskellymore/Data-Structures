@@ -9,24 +9,63 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
-class BSTNode:
+
+class BinarySearchTree:
     def __init__(self, value):
         self.value = value
         self.left = None
         self.right = None
 
     # Insert the given value into the tree
-    def insert(self, value):
-        pass
+    def insert(self, value):  
+        # if empty
+        if self.value == None:
+            return BinarySearchTree(value)
+            
+        # recur down tree
+        if value < self.value and self.left is not None:            
+            self.left.insert(value)
+            # if new value is > self.left.insert(value)
+            if value > self.left.insert(value):
+                self.right.insert(value)
+        if value > self.value and self.right is not None:
+            self.right.insert(value)
+
+        return self
+
+
+ 
+
+
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        # at start, self will be root
+        # compare target against self
+        # 
+        # when searching fo False: we know we need to go in 1 direction
+        # but there's nothing in the left or right direction
+
+        if target == self.value:
+            return True
+        if target < self.value:
+            # go left
+            if not self.left:
+                return False
+            return self.left.contains(target)
+
+        else:
+            # go right
+            if not self.right:
+                return False
+            return self.right.contains(target)
+
 
     # Return the maximum value found in the tree
     def get_max(self):
         pass
+
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
