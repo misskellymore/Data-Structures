@@ -23,10 +23,14 @@ class BinarySearchTree:
         # else if new node < node.value, go left
         #  if >= go right, insert(value)
         if value < self.value:
-            if self.left is None:
+            if not self.left:
                 self.left = BinarySearchTree(value)
+
+            else:
+                self.left.insert(value)
         else: 
-            if self.right is None:
+            # >=
+            if not self.right:
                 self.right = BinarySearchTree(value)
             else: 
                 self.right.insert(value)
@@ -69,14 +73,19 @@ class BinarySearchTree:
 
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
-   
+        fn(self.value)
+
+        if self.left:
+            self.left.for_each(fn)
+        if self.right:
+            self.right.for_each(fn)
 
     # Part 2 -----------------------
 
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
-    def in_order_print(self, node):
-        pass
+    # def in_order_print(self, node):
+    #     pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
