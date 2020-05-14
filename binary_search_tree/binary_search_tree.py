@@ -18,23 +18,18 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):  
-        # if empty
-        if self.value == None:
-            return BinarySearchTree(value)
-            
-        # recur down tree
-        if value < self.value and self.left is not None:            
-            self.left.insert(value)
-            # if new value is > self.left.insert(value)
-            if value > self.left.insert(value):
+        # check if empty
+        # if empty put node here @ root
+        # else if new node < node.value, go left
+        #  if >= go right, insert(value)
+        if value < self.value:
+            if self.left is None:
+                self.left = BinarySearchTree(value)
+        else: 
+            if self.right is None:
+                self.right = BinarySearchTree(value)
+            else: 
                 self.right.insert(value)
-        if value > self.value and self.right is not None:
-            self.right.insert(value)
-
-        return self
-
-
- 
 
 
 
